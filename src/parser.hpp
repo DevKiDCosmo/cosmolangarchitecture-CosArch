@@ -194,7 +194,7 @@ public:
                            "Unclear statement. Probably accessing a variable that is not declared in the scope of the statement.");
             }
         }*/
-        while(auto stmt = parse_stmt()) {
+        while (auto stmt = parse_stmt()) {
             scope->stmts.push_back(stmt.value());
         }
         try_consume(TokenType::close_curly, "Expected `}`");
@@ -216,6 +216,7 @@ public:
             try_consume(TokenType::semi, "Expected `;`");
             auto stmt = m_allocator.alloc<NodeStmt>();
             stmt->var = stmt_exit;
+            Log::addProcess("Parsing Exit-Statement");
             return stmt;
         } else if (
                 peek().has_value() && peek().value().type == TokenType::let && peek(1).has_value()
@@ -235,13 +236,14 @@ public:
             stmt->var = stmt_let;
             return stmt;
         } else if (peek().has_value() && peek().value().type == TokenType::open_curly) {
-            if(auto scope = parse_scope()) {
+            if (auto scope = parse_scope()) {
                 auto stmt = m_allocator.alloc<NodeStmt>();
                 stmt->var = scope.value();
                 return stmt;
             } else {
                 Log::error(4572, "Invalid statement. Scope Error.");
             }
+            Log::addProcess("Parsing Scope");
         } else if (auto if_ = try_consume(TokenType::if_)) {
             try_consume(TokenType::open_paren, "Expected `(`");
             auto stmt_if = m_allocator.alloc<NodeStmtIf>();
@@ -255,10 +257,11 @@ public:
             if (auto scope = parse_scope()) {
                 stmt_if->scope = scope.value();
             } else {
-                Log::error(4572, "Invalid statement. Scope is not valid.");
+                Log::error(4572, "Invalid statement. Scope is not valid in the if stmt");
             }
             auto stmt = m_allocator.alloc<NodeStmt>();
             stmt->var = stmt_if;
+            Log::addProcess("Parsing If-Statement");
             return stmt;
         } else {
             return {};
@@ -271,6 +274,7 @@ public:
         while (peek().has_value()) {
             if (auto stmt = parse_stmt()) {
                 prog.stmts.push_back(stmt.value());
+                Log::addProcess("Generation of statements");
             } else {
                 Log::error(2302, "Program contains invalid statement. Program generation failed.");
             }

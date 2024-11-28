@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(CosmoArchitecture src/main.cpp
         src/utils/log.cpp
-        src/utils/log.hpp)
+        src/utils/log.hpp
+        src/main.cpp)

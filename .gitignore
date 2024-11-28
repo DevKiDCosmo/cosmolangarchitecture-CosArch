@@ -2,3 +2,5 @@
 /cmake-build-debug-wsl-ubuntu/
 /cmake-build-release-wsl-ubuntu/
 /cmake-build-relwithdebinfo-wsl-ubuntu/
+/cmake-build-debug/
+/cmake-build-debug-win/

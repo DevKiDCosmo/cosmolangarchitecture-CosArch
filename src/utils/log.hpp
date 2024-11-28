@@ -12,6 +12,7 @@ public:
     static void error(const std::string &msg);
     static void error(const int code);
     static void error(const int code, const std::string &additionalMsg);
+    static void error(const int code, const std::string &additionalMsg, const bool exit);
     static void add(const std::string &msg);
     static void addWarning(const std::string &msg);
     static void addInfo(const std::string &msg);
