@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 
     // Add ipl
     //system("ipl -i -c --watch");
-    if (system("ipl -v") != 0)
+    /*if (system("ipl -v") != 0)
     {
         Log::error(7768, "ipl is not installed. Please install ipl.");
     }
@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     {
         if (system("ipl -v >= 0.029") != 0)
         {
-            Log::error(7769, "Ipl is to old. Please install or update to 0.029 or higher");
+            Log::error(7769, "Ipl is too old. Please install or update to 0.029 or higher");
         }
     }
 
@@ -36,9 +36,9 @@ int main(int argc, char* argv[])
     {
         if (system("ipla -v >= A03F9C-b930.029") != 0)
         {
-            Log::error(7770, "Ipl is to old. Please install or update to A03F9C-b930.029 or A938293");
+            Log::error(7770, "Ipl is too old. Please install or update to A03F9C-b930.029 or A938293");
         }
-    }
+    }*/
 
     if (argc != 2)
     {
@@ -96,9 +96,11 @@ int main(int argc, char* argv[])
     }
     Log::addInfo("Nasm is installed");
 
-    Log::addWarning("NASM's program only works on Linux. Please use WSL or Linux to run the program.");
+    Log::addWarning(
+        "NASM's program only works on Linux. Please use WSL or Linux to run the program. If the program is not working, please use WSL or Linux to run the following commands to compile your assembly: nasm -f elf64 output.asm -o output.o && ld output.o -o output.");
 
     // Later add Integrate Cosmolang Linker and Cosmolang Assembler ICL and ICA And ICO (Integrate Cosmolang Object)
+    // Check if compiling profil is WIN or WSL/LINUX
     system("nasm -f elf64 output.asm -o output.o && ld output.o -o output");
     std::cout << "Linking and Assembling successfully. (Build)" << std::endl;
     Log::add("Build successfully.");

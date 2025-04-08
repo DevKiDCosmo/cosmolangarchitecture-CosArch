@@ -6,6 +6,14 @@
 #include <chrono>
 #include <fstream>
 
+// For Linux base compiler
+#include <iomanip>   // Für std::put_time, std::setfill, std::setw
+#include <sstream>   // Für std::ostringstream
+#include <ctime>     // Für localtime_s
+/*
+ * localtime_s - Thread-safe version of localtime and for WIN
+ * localtime_r - Thread-safe version of localtime and for Linux etc.
+ */
 
 std::unordered_map<int, std::string> Log::error_codes = {
     {12, "Unknown Error"},
@@ -19,7 +27,7 @@ std::unordered_map<int, std::string> Log::error_codes = {
     {2302, "Invalid statement"},
     {3956, "Expected expression. Paren Expression Error."},
     {3957, "Invalid If-Statement Expression"},
-    {4568, "Invalid expression. Exit-Code Paran Expression Error"},
+    {4568, "Invalid expression. Exit-Code Param Expression Error"},
     {4569, "Invalid expression. Ident Error"},
     {4570, "Undeclared identifier"},
     {4571, "Identifier already used"},
@@ -167,7 +175,7 @@ std::string cTime()
     auto nowNs = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()) % 1000000000;
 
     std::tm bt{};
-    localtime_s(&bt, &nowAsTimeT); // Use localtime_r(&bt, &nowAsTimeT) on Unix-like systems
+    localtime_r(&nowAsTimeT, &bt); // Use localtime_s(&bt, &nowAsTimeT) on Windows systems
     std::ostringstream oss;
 
     oss << std::put_time(&bt, "%Y-%m-%d %H:%M:%S");
@@ -189,7 +197,7 @@ std::string cTime(long long ms)
     auto milliseconds = ms % 1000;
 
     std::tm bt{};
-    localtime_s(&bt, &timeT); // Use localtime_r(&bt, &timeT) on Unix-like systems
+    localtime_r(&timeT, &bt); // Use localtime_r(&timeT, &bt) on Windows systems
     std::ostringstream oss;
 
     oss << std::put_time(&bt, "%Y-%m-%d %H:%M:%S");
