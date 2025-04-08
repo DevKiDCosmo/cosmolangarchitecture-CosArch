@@ -1,13 +1,20 @@
-//let x = (10 - 2 * 3) / 2 + (3+(4 - 1) * 7) + 4;
-//let y = (x + x * 2) / 3 - 2;
-//let z = (x + y) / (x - y);
-//let a = (x + y) / (x - y) + 1;
-//let alpha = (x + y) / (x - y) + 1 + a - z * 3;
+let x = (10 - 2 * 3) / 2 + (3+(4 - 1) * 7) + 4;
+let y = (x + x * 2) / 3 - 2;
+let z = (x + y) / (x - y);
+let a = (x + y) / (x - y) + 1;
+let alpha = (x + y) / (x - y) + 1 + a - z * 3;
 
 let d = 1;
 
 if (d - 1) {
-    exit(1);
+    exit(69);
+} elif (d) {
+    exit(68);
+} elif (d + 1) {
+    exit(70);
+} else {
+    exit(67);
 }
 
-exit(0);
+// Unreachable code
+exit(100);

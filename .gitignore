@@ -1,4 +1,10 @@
 # Project exclude paths
-/cmake-build-debug-wsl-ubuntu/
-/cmake-build-release-wsl-ubuntu/
-/cmake-build-relwithdebinfo-wsl-ubuntu/
+/cmake-build-debug-mingw/
+/cmake-build-debug-win/
+/cmake-build-debug-wsl/
+/cmake-build-default-mingw/
+/cmake-build-default-win/
+/cmake-build-default-wsl/
+/cmake-build-release-mingw/
+/cmake-build-release-win/
+/cmake-build-release-wsl/

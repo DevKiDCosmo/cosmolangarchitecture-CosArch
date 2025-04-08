@@ -7,22 +7,25 @@
 #include <ctime>
 
 
-class Log {
+class Log
+{
 public:
-    static void error(const std::string &msg);
+    static void error(const std::string& msg);
     static void error(const int code);
-    static void error(const int code, const std::string &additionalMsg);
-    static void add(const std::string &msg);
-    static void addWarning(const std::string &msg);
-    static void addInfo(const std::string &msg);
-    static void addProcess(const std::string &msg);
-    static void addFatal(const std::string &msg);
-    static void addSuccess(const std::string &msg);
+    static void error(const int code, const std::string& additionalMsg);
+    static void error(const int code, const std::string& additionalMsg, const bool exit);
+    static void add(const std::string& msg);
+    static void addWarning(const std::string& msg);
+    static void addInfo(const std::string& msg);
+    static void addProcess(const std::string& msg);
+    static void addFatal(const std::string& msg);
+    static void addSuccess(const std::string& msg);
     static void createFile();
     static void createFile(const int code);
 
 private:
-    struct _log {
+    struct _log
+    {
         time_t time;
         std::string msg;
         std::string details;
@@ -41,7 +44,7 @@ private:
     static std::vector<_log> process;
 
 
-    static void addError(const std::string &msg, const int code, const std::string &details);
+    static void addError(const std::string& msg, const int code, const std::string& details);
 
     static void generatingLog(const int code);
     static auto getTimeInNS();

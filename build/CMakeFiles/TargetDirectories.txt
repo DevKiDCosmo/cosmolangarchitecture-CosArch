@@ -1,3 +1,0 @@
-/mnt/g/CosmolangProgrammingLanguageProjects/CosmolangArchitecture/build/CMakeFiles/cosarch.dir
-/mnt/g/CosmolangProgrammingLanguageProjects/CosmolangArchitecture/build/CMakeFiles/edit_cache.dir
-/mnt/g/CosmolangProgrammingLanguageProjects/CosmolangArchitecture/build/CMakeFiles/rebuild_cache.dir
